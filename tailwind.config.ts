@@ -11,8 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lamaSky: "#C3EBFA",
+        lamaSkyLight: "#EDF9FD",
+        lammaYellow: "#FAE27C",
+        lammaPurple: "#CFCEFF",
+        lammaPurpleLight: "#FAE27C",
+        lammaYellowLight: "#FEFCE8",
       },
     },
   },
+
   plugins: [],
 } satisfies Config;
