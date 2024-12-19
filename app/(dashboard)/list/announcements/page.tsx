@@ -2,18 +2,16 @@ import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
-import { eventsData, role } from "@/lib/data";
+import { announcementsData, role } from "@/lib/data";
 import Image from "next/image";
 
 import React from "react";
 
-interface IEvent {
+interface IAnnouncement {
   id: number;
   title: string;
   class: string;
   date: string;
-  startTime: string;
-  endTime: string;
 }
 
 const columns = [
@@ -34,22 +32,12 @@ const columns = [
   },
 
   {
-    header: "Start Time",
-    accessor: "startTime",
-    className: "hidden lg:table-cell",
-  },
-  {
-    header: "End Time",
-    accessor: "endTime",
-    className: "hidden lg:table-cell",
-  },
-  {
     header: "Action",
     accessor: "action",
   },
 ];
-const EventListPage = () => {
-  const rederRow = (item: IEvent) => (
+const AnnouncementListPage = () => {
+  const rederRow = (item: IAnnouncement) => (
     <tr
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-xs hover:bg-lamaSkyLight"
@@ -62,15 +50,12 @@ const EventListPage = () => {
       <td className="hidden md:table-cell">{item.class}</td>
       <td className="hidden md:table-cell">{item.date}</td>
 
-      <td className="hidden md:table-cell">{item.startTime}</td>
-
-      <td className="hidden md:table-cell">{item.endTime}</td>
       <td>
         <div className="flex items-center gap-2">
           {role === "admin" && (
             <>
-              <FormModal table="event" type="update" data={item} />
-              <FormModal table="event" type="delete" id={item.id} />
+              <FormModal table="announcement" type="update" data={item} />
+              <FormModal table="announcement" type="delete" id={item.id} />
             </>
           )}
         </div>
@@ -97,13 +82,13 @@ const EventListPage = () => {
             >
               <Image src={"/sort.png"} alt=" " height={14} width={14} />
             </button>
-            <FormModal table="event" type="create" />
+            <FormModal table="announcement" type="create" />
           </div>
         </div>
       </div>
       {/* LIST */}
       <div>
-        <Table columns={columns} rederRow={rederRow} data={eventsData} />
+        <Table columns={columns} rederRow={rederRow} data={announcementsData} />
       </div>
       {/* PAGINATION */}
       <div>
@@ -113,4 +98,4 @@ const EventListPage = () => {
   );
 };
 
-export default EventListPage;
+export default AnnouncementListPage;

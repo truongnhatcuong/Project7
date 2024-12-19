@@ -1,13 +1,14 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
 import { role, subjectsData } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 
 interface ISubject {
-  id: string;
+  id: number;
   name: string;
   teachers: string[];
 }
@@ -43,16 +44,11 @@ const SubjectListPage = () => {
       <td className="hidden md:table-cell">{item.teachers.join(",")}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teacher/${item.id}`} className="">
-            <button className="w-7 h-7 flex items-center justify-center  rounded-full bg-lamaSky  ">
-              <Image src={"/view.png"} alt="" width={14} height={14} />
-            </button>
-          </Link>
-
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lammaPurple ">
-              <Image src={"/delete.png"} alt="" width={14} height={14} />
-            </button>
+            <>
+              <FormModal table="subject" type="update" data={item} />
+              <FormModal table="subject" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -78,12 +74,8 @@ const SubjectListPage = () => {
             >
               <Image src={"/sort.png"} alt=" " height={14} width={14} />
             </button>
-            <button
-              className="w-8 h-8 flex items-center justify-center
-             rounded-full bg-lammaYellow"
-            >
-              <Image src={"/plus.png"} alt=" " height={14} width={14} />
-            </button>
+
+            <FormModal table="subject" type="create" />
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
 import { assignmentsData, role } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 
 interface IExams {
@@ -56,16 +57,11 @@ const ExamsListPage = () => {
 
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teacher/${item.id}`} className="">
-            <button className="w-7 h-7 flex items-center justify-center  rounded-full bg-lamaSky  ">
-              <Image src={"/edit.png"} alt="" width={14} height={14} />
-            </button>
-          </Link>
-
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lammaPurple ">
-              <Image src={"/delete.png"} alt="" width={14} height={14} />
-            </button>
+            <>
+              <FormModal table="assignment" type="update" data={item} />
+              <FormModal table="assignment" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -93,12 +89,7 @@ const ExamsListPage = () => {
             >
               <Image src={"/sort.png"} alt=" " height={14} width={14} />
             </button>
-            <button
-              className="w-8 h-8 flex items-center justify-center
-             rounded-full bg-lammaYellow"
-            >
-              <Image src={"/plus.png"} alt=" " height={14} width={14} />
-            </button>
+            <FormModal table="assignment" type="create" />
           </div>
         </div>
       </div>

@@ -18,10 +18,10 @@ const BigCalendar = () => {
       events={calendarEvents}
       startAccessor="start"
       endAccessor="end"
-      style={{ height: "98%" }}
+      style={{ height: "99%" }}
       views={["work_week", "day"]}
       view={view}
-      defaultDate={new Date(2024, 7, 12)}
+      date={new Date(2024, 7, 12)}
       onView={handleOnchangeView}
       min={new Date(2025, 1, 0, 8, 0, 0)}
       max={new Date(2025, 1, 0, 19, 0, 0)}
