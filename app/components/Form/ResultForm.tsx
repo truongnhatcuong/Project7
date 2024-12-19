@@ -23,8 +23,8 @@ const schema = z.object({
   sex: z.enum(["male", "female"], { message: "sex bắt buộc!" }),
   img: z.instanceof(File, { message: "Image bắt buộc!" }),
 });
-type TeacherFormValues = z.infer<typeof schema>;
-const TeacherForm = ({
+type StutentValues = z.infer<typeof schema>;
+const ResultForm = ({
   type,
   data,
 }: {
@@ -35,7 +35,7 @@ const TeacherForm = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TeacherFormValues>({
+  } = useForm<StutentValues>({
     resolver: zodResolver(schema),
   });
 
@@ -44,7 +44,7 @@ const TeacherForm = ({
   });
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
-      <h1 className="text-xl font-semibold">Create a new teacher</h1>
+      <h1 className="text-xl font-semibold">Create a new Result</h1>
       <span className="text-sm text-gray-400 font-medium">
         Authentication Information
       </span>
@@ -182,4 +182,4 @@ const TeacherForm = ({
   );
 };
 
-export default TeacherForm;
+export default ResultForm;

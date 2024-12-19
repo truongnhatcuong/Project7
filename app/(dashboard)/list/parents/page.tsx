@@ -60,7 +60,7 @@ const ParentListPage = () => {
         <div className="flex items-center gap-2">
           {role === "admin" && (
             <>
-              <FormModal table="student" type="update" data={item} />
+              <FormModal table="parent" type="update" data={item} />
               <FormModal table="parent" type="delete" id={item.id} />
             </>
           )}
@@ -88,7 +88,7 @@ const ParentListPage = () => {
             >
               <Image src={"/sort.png"} alt=" " height={14} width={14} />
             </button>
-            <FormModal table="student" type="create" />
+            <FormModal table="parent" type="create" />
           </div>
         </div>
       </div>
