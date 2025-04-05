@@ -143,7 +143,10 @@ const TeacherSinglepage = () => {
         <div className="bg-white p-4 rounded-md">
           <h1 className="text-xl font-semibold">Shortcuts</h1>
           <div className="flex mt-4 gap-4 flex-wrap text-xs text-gray-500">
-            <Link href={"/"} className="p-3 rounded-md bg-lamaSkyLight   ">
+            <Link
+              href={`/list/teachers?classId=2`}
+              className="p-3 rounded-md bg-lamaSkyLight   "
+            >
               {" "}
               Teacher&apos;s Classes
             </Link>

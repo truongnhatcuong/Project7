@@ -130,7 +130,7 @@ const StudentSinglepage = () => {
               Students&apos;s Lessons
             </Link>
             <Link
-              href={"/"}
+              href={`/list/teachers?classId=2`}
               className="py-2 px-1 rounded-md bg-lammaPurpleLight   "
             >
               {" "}
